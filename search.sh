@@ -8,6 +8,6 @@ echo "Searching for: $search_query ..."
 
 wget --user-agent="$USER_AGENT" -qO- "https://inv.nadeko.net/search?q=$formatted_query" -qO index.html
 
-id=$(cat index.html | grep 'href="/watch?' | head -n 1 | awk -F "=" '{print $4}' | awk -F '"' '{print $1}')
+id=$(cat index.html | grep 'a href="/watch?' | grep -viE 'sub|subs|subtitles|unofficial' | head -n 1 | awk -F "=" '{print $4}' | awk -F '"' '{print $1}')
 
 yt-dlp -f "bestaudio[ext=m4a]" --embed-metadata --embed-thumbnail --add-metadata "youtube.com/watch?v=$id"
