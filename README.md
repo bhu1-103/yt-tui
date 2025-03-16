@@ -1,7 +1,7 @@
 # yt-tui
 a simple youtube interface in the terminal
 
-dependencies: `yt-dlp`. Click [here](https://github.com/yt-dlp/yt-dlp?tab=readme-ov-file#recommended) to find install instructions
+**dependencies:** `yt-dlp`. Click [here](https://github.com/yt-dlp/yt-dlp?tab=readme-ov-file#recommended) to find install instructions
 
 ## how to use
 - `git clone https://github.com/bhu1-103/yt-tui.git`
