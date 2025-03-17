@@ -10,6 +10,8 @@ echo "link: https://inv.nadeko.net/search?q=$formatted_query"
 
 wget --user-agent="$USER_AGENT" -qO- "https://inv.nadeko.net/search?q=$formatted_query" -qO index.html
 
-id=$(cat index.html | grep 'a href="/watch?' | grep -viE 'sub|subs|subtitles|unofficial' | head -n 10 | awk -F "=" '{print $3}' | awk -F '"' '{print $1}' | fzf)
+titles=$(at index.html | grep 'a href="/watch?' | grep -viE 'sub|subs|subtitles|unofficial' | head -n 10 | awk -F '"auto">' '{print $2}' | awk -F "</p>" '{print $1}')
+
+id=$(cat index.html | grep 'a href="/watch?' | grep -viE 'sub|subs|subtitles|unofficial' | head -n 10 | awk -F '"auto">' '{print $1}' | awk -F "v=" '{print $2}' | awk -F '"' '{print $1}')
 
 echo $id
