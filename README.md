@@ -8,3 +8,7 @@ a simple youtube interface in the terminal
 - `cd yt-tui`
 - `./search.sh`
 - now type the song/video title you wish to listen to
+
+## to-do
+
+- pipe videos to fzf
