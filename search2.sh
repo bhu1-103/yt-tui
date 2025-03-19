@@ -12,9 +12,10 @@ wget --user-agent="$USER_AGENT" "https://inv.nadeko.net/search?q=$formatted_quer
 
 title=$(cat index.html | grep 'a href="/watch?' | grep -viE 'sub|subs|subtitles|unofficial' | head -n 10 | awk -F '"auto">' '{print $2}' | awk -F "</p>" '{print $1}')
 
+echo $title
+
 id=$(cat index.html | grep 'a href="/watch?' | grep -viE 'sub|subs|subtitles|unofficial' | head -n 10 | awk -F '"auto">' '{print $1}' | awk -F "v=" '{print $2}' | awk -F '"' '{print $1}')
 
 selected_index=$(paste <(echo "$title") <(echo "$id") | fzf | awk '{print $NF}')
 
-echo "Selected video ID: $selected_index"
-echo "Watch here: https://youtube.com/watch?v=$selected_index"
+yt-dlp -f "bestaudio[ext=m4a]" --embed-metadata --embed-thumbnail --add-metadata "youtube.com/watch?v=$selected_index"
