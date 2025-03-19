@@ -14,15 +14,7 @@ title=$(cat index.html | grep 'a href="/watch?' | grep -viE 'sub|subs|subtitles|
 
 id=$(cat index.html | grep 'a href="/watch?' | grep -viE 'sub|subs|subtitles|unofficial' | head -n 10 | awk -F '"auto">' '{print $1}' | awk -F "v=" '{print $2}' | awk -F '"' '{print $1}')
 
-#selected=$(paste <(echo "$title") <(echo "$id") | fzf | awk '{print $NF}')
-
-#echo $selected
-#selected_index=$(for i in "${!titles[@]}"; do echo "$i) ${titles[$i]}"; done | fzf | awk -F ')' '{print $1}')
-
 selected_index=$(paste <(echo "$title") <(echo "$id") | fzf | awk '{print $NF}')
 
-if [[ -n "$selected_index" ]]; then
-    echo "Selected video ID: $selected_index"
-    echo "Watch here: https://youtube.com/watch?v=$selected_index"
-fi
-
+echo "Selected video ID: $selected_index"
+echo "Watch here: https://youtube.com/watch?v=$selected_index"
