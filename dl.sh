@@ -15,5 +15,5 @@ while IFS= read -r search_query; do
 
     #selected_index=$(paste <(echo "$title") <(echo "$id") | fzf | awk '{print $NF}')
 
-    yt-dlp -f bestaudio --extract-audio --audio-format mp3 --audio-quality 320K --embed-metadata --embed-thumbnail --add-metadata --postprocessor-args "-q:a 2" "https://youtube.com/watch?v=$id"
+    yt-dlp -f bestaudio --extract-audio --audio-format mp3 --embed-metadata --embed-thumbnail --add-metadata --postprocessor-args "-q:a 2" "https://youtube.com/watch?v=$id"
 done < "$INPUT_FILE"
