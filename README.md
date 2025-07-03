@@ -11,5 +11,5 @@ a simple youtube interface in the terminal
 
 ## to-do
 
-[x] pipe videos to fzf
-[x] sync files with another device
+- [x] pipe videos to fzf
+- [x] sync files with another device
